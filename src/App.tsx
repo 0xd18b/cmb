@@ -1,19 +1,21 @@
-import { Layout } from 'antd';
+import { Layout, Typography } from 'antd';
 import 'antd/dist/antd.css';
 import React from 'react';
 import './App.css';
 import Validators from './Validators';
+const { Text, Title, Link } = Typography;
 
 const { Header, Content, Footer } = Layout;
 
 function App() {
   return (
     <Layout>
-      <Header>Header</Header>
-      <Content style={{ padding: '0 50px' }}>
+      <Content style={{ padding: '50px 50px' }}>
         <Validators />
       </Content>
-      <Footer style={{ textAlign: 'center', color: 'grey' }}>0xd18b 2021</Footer>
+      <Footer style={{ textAlign: 'center', color: 'grey' }}>
+        Built and operated by 0xd18b | No warranty for use of any kind | Software License: <Link href="https://testnet.explorer.agoric.net/blocks" target="_blank">MIT</Link> | <Link href="https://github.com/0xd18b/cmb" target="_blank">Source</Link>
+      </Footer>
     </Layout>
   );
 }
