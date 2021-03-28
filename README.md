@@ -44,3 +44,20 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+
+Links:
+https://viserjs.github.io/demo.html#/viser/bar/basic-column
+https://docs.tendermint.com/master/spec/light-client/accountability/
+https://medium.com/cypher-core/tendermint-2019-criticize-by-creation-not-by-finding-fault-ae49fb54f757
+https://github.com/talyssonoc/react-katex
+https://fanwangecon.github.io/R4Econ/math/func_ineq/htmlpdfr/fs_gini_disc.html
+https://news.ycombinator.com/item?id=9138923
+
+# TODO
+- insider disrupter cost is wrong: too low. doesn't take itself into account
+- make block variable
+- add "dashboard mode" which polls and rotates
+- rework bottom line
+- add disclaimers to insider, cartel
+- prod build, serve from AWS
