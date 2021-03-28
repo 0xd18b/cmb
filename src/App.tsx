@@ -20,7 +20,7 @@ function App() {
         <Validators />
       </Content>
       <Footer style={{ textAlign: 'center', color: 'grey' }}>
-        Built and operated by Validator <Link href="https://testnet.explorer.agoric.net/validator/agoricvaloper1zdfv0v74pjnupn05htn9lsrtqgd7mepw80atm0" target="_blank">0xd18b</Link> | No warranty or liability for use of any kind | Software License: <Link href="" target="_blank">MIT</Link> | <Link href="https://github.com/0xd18b/cmb" target="_blank">Source</Link>
+        Constructed and operated by Validator <Link href="https://testnet.explorer.agoric.net/validator/agoricvaloper1zdfv0v74pjnupn05htn9lsrtqgd7mepw80atm0" target="_blank">0xd18b</Link> | No warranty or liability for use of any kind | Software License: <Link href="https://raw.githubusercontent.com/0xd18b/cmb/main/LICENSE.md" target="_blank">MIT</Link> | <Link href="https://github.com/0xd18b/cmb" target="_blank">Source</Link>
       </Footer>
     </Layout>
   );
