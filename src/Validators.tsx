@@ -173,12 +173,12 @@ class ValidatorsComponent extends Component {
   async componentDidMount() {
 
     const all_validators = [];
-    let all_validator_response = await axios.get<AllValidatorResponse>(`http://35.175.206.227:1317/cosmos/staking/v1beta1/validators`);
+    let all_validator_response = await axios.get<AllValidatorResponse>(`https://api.validator0xd18b.net/cosmos/staking/v1beta1/validators`);
     all_validators.push(...all_validator_response.data.validators);
     let call_count = 0;
 
     while (all_validator_response.data.pagination.next_key && call_count < 10) { // escape hatch, don't call more than 10 times...
-      all_validator_response = await axios.get<AllValidatorResponse>(`http://35.175.206.227:1317/cosmos/staking/v1beta1/validators?pagination.offset=${all_validator_response.data.validators.length - 1}`);
+      all_validator_response = await axios.get<AllValidatorResponse>(`https://api.validator0xd18b.net/cosmos/staking/v1beta1/validators?pagination.offset=${all_validator_response.data.validators.length - 1}`);
       all_validators.push(...all_validator_response.data.validators);
       call_count++;
     }
@@ -188,7 +188,7 @@ class ValidatorsComponent extends Component {
       return p;
     }, {})
 
-    const latest_validator_response = await axios.get<LatestValidatorResponse>(`http://35.175.206.227:1317/cosmos/base/tendermint/v1beta1/validatorsets/latest`);
+    const latest_validator_response = await axios.get<LatestValidatorResponse>(`https://api.validator0xd18b.net/cosmos/base/tendermint/v1beta1/validatorsets/latest`);
     const block_height = parseInt(latest_validator_response.data.block_height);
 
     let validators: Validator[] = this.shuffle(latest_validator_response.data.validators)
