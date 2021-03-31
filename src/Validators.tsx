@@ -19,7 +19,7 @@ interface LatestValidator {
 };
 
 interface LatestValidatorResponse {
-  block_height: number;
+  block_height: string;
   validators: LatestValidator[];
 }
 
@@ -178,7 +178,7 @@ class ValidatorsComponent extends Component {
     let call_count = 0;
 
     while (all_validator_response.data.pagination.next_key && call_count < 10) { // escape hatch, don't call more than 10 times...
-      all_validator_response = await axios.get<AllValidatorResponse>(`http://35.175.206.227:1317/cosmos/staking/v1beta1/validators?pagination.key=${all_validator_response.data.pagination.next_key}`);
+      all_validator_response = await axios.get<AllValidatorResponse>(`http://35.175.206.227:1317/cosmos/staking/v1beta1/validators?pagination.offset=${all_validator_response.data.validators.length - 1}`);
       all_validators.push(...all_validator_response.data.validators);
       call_count++;
     }
@@ -189,9 +189,9 @@ class ValidatorsComponent extends Component {
     }, {})
 
     const latest_validator_response = await axios.get<LatestValidatorResponse>(`http://35.175.206.227:1317/cosmos/base/tendermint/v1beta1/validatorsets/latest`);
-    const block_height = latest_validator_response.data.block_height;
+    const block_height = parseInt(latest_validator_response.data.block_height);
 
-    const validators: Validator[] = this.shuffle(latest_validator_response.data.validators)
+    let validators: Validator[] = this.shuffle(latest_validator_response.data.validators)
       .map((v, i) => {
         return {
           voting_power: parseInt(v.voting_power),
@@ -206,7 +206,7 @@ class ValidatorsComponent extends Component {
       })
       .sort((a, b) => b.voting_power - a.voting_power);
 
-    const total_stake = this.totalStake(validators)
+    const total_stake = this.totalStake(validators);
 
     let attacker_stake = 0;
     let min_controlling_cartel = 0;
